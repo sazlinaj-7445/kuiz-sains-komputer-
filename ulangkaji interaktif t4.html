@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuiz Interaktif Sains Komputer Tingkatan 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0fdf4; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Toast Animation */
+        #toast { transition: opacity 0.3s, transform 0.3s; }
+        .toast-show { opacity: 1 !important; transform: translateY(0) !important; z-index: 50; }
+        pre, code { font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; }
+        th { background-color: #e5e7eb; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-emerald-600 text-white p-4 shadow-lg sticky top-0 z-40">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">KUIZ INTERAKTIF SAINS KOMPUTER T4</h1>
+            <div class="space-x-4">
+                <button onclick="switchTab('bahagianA')" id="btnA" class="px-4 py-2 bg-emerald-800 rounded font-semibold transition hover:bg-emerald-700">Bahagian A</button>
+                <button onclick="switchTab('bahagianB')" id="btnB" class="px-4 py-2 bg-emerald-500 rounded font-semibold transition hover:bg-emerald-700">Bahagian B</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-4 max-w-5xl mt-6">
+        <p class="mb-6 text-center text-gray-600">Jawab semua soalan di ruang yang disediakan. Tekan butang "Semak Jawapan" untuk membandingkan jawapan anda dengan skema permarkahan sebenar.</p>
+
+        <!-- BAHAGIAN A -->
+        <div id="bahagianA" class="tab-content fade-in">
+            <h2 class="text-3xl font-bold text-emerald-700 mb-6 border-b-2 border-emerald-300 pb-2">BAHAGIAN A (50 MARKAH)</h2>
+            <p class="mb-4 font-medium">Bahagian ini mempunyai 20 soalan. Jawab semua soalan.</p>
+
+            <!-- Q1 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">1. Nyatakan empat teknik pemikiran komputasional dalam penyelesaian masalah. (4 markah)</p>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3 focus:ring-2 focus:ring-emerald-400 focus:outline-none" rows="3" placeholder="Taip jawapan anda di sini..."></textarea>
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <ul class="list-none text-green-900">
+                        <li>i. Teknik Leraian (1M)[cite: 12]</li>
+                        <li>ii. Pengecaman corak (1M)[cite: 12]</li>
+                        <li>iii. Peniskalaan (1M)[cite: 12]</li>
+                        <li>iv. Algoritma (1M)[cite: 12]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">2. Tulis pseudokod untuk aturcara yang telah menerima dua nombor dan memaparkan jumlahnya sebagai output. (4 markah)</p>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3 font-mono" rows="5" placeholder="MULA..."></textarea>
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan (4M):</p>
+                    <pre class="text-green-900">1. MULA
+2. INPUT nombor 1 = 7 nombor 2 = 9
+3. PROSES jumlah = nombor 1 + nombor 2
+4. OUTPUT papar jumlah = 16
+5. TAMAT[cite: 12]</pre>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">3. Nyatakan dua perwakilan untuk algoritma. (2 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-3 rounded mb-3" placeholder="Perwakilan 1, Perwakilan 2">
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">i. Pseudokod (1M)<br>ii. Carta Alir (1M)[cite: 12]</p>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">4. Rajah dibawah menunjukkan contoh struktur kawalan dalam pengaturcaraan. Nyatakan jenis struktur kawalan tersebut. (1 markah)</p>
+                <div class="bg-gray-100 p-4 mb-4 text-center border rounded">
+                    <p class="italic text-gray-500">[Rajah Carta Alir: Bentuk Bujur &rarr; Segi Empat &rarr; Segi Empat Sama (Pilihan) &rarr; Kembali ke atas / Bentuk Bujur di bawah]</p>
+                </div>
+                <input type="text" class="w-full border border-gray-300 p-3 rounded mb-3" placeholder="Jenis struktur kawalan...">
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">Struktur kawalan: Struktur Kawalan Pengulangan (1M)[cite: 12]</p>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">5. Terdapat 3 jenis ralat dalam pengaturcaraan. Nyatakan. (3 markah)</p>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3" rows="3" placeholder="Senaraikan 3 ralat..."></textarea>
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">i. Ralat sintaks (1M)<br>ii. Ralat logik (1M)<br>iii. Ralat masa larian (1M)[cite: 12]</p>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">6. Nyatakan 3 jenis struktur kawalan yang terdapat dalam pengaturcaraan komputer. (3 markah)</p>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3" rows="3" placeholder="Senaraikan 3 struktur kawalan..."></textarea>
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">i. Struktur kawalan urutan (1M)<br>ii. Struktur kawalan pilihan (1M)<br>iii. Struktur kawalan pengulangan (1M)[cite: 12]</p>
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">7. Tukarkan kod aturcara dibawah kepada Switch-Case (3 markah)</p>
+                <pre class="bg-gray-800 text-green-400 p-4 rounded mb-4 overflow-x-auto"><code>if (umur>=60) {
+    Kategori = "WARGA EMAS";
+} else if (umur>=25) {
+    Kategori = "REMAJA";
+}</code></pre>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3 font-mono bg-gray-50" rows="5" placeholder="Tulis kod switch-case di sini..."></textarea>
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan (3M):</p>
+                    <pre class="text-green-900 font-mono">switch (umur) {
+case 1: {
+  system.out.println(umur>60 + "WARGA EMAS")
+  break; }
+case 2: {
+  system.out.println(umur>25 + "DEWASA")
+  break; }
+}[cite: 12]</pre>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">8. Nyatakan 3 amalan terbaik dalam pengaturcaraan untuk menghasilkan satu kod aturcara yang baik. (3 markah)</p>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3" rows="3" placeholder="Senaraikan 3 amalan terbaik..."></textarea>
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">i. Penggunaan inden yang konsisten (1M)<br>ii. Pengisytiharaan pemboleh ubah yang bermakna (1M)<br>iii. Penggunaan komen untuk membantu pengaturcaraan (1M)[cite: 12]</p>
+                </div>
+            </div>
+
+            <!-- Q9 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">9. Rajah di bawah menunjukkan aturcara dan ralat yang dipaparkan.</p>
+                <pre class="bg-gray-800 text-green-400 p-4 rounded mb-4 overflow-x-auto text-sm"><code>public class HargaJualan {
+    public static void main(String[] args) {
+        int jualan1 = 100;
+        int jualan2 = 120;
+        double JumlahJualan;
+        
+        JumlahJualan = jualan1 - jualan2;
+        System.out.println("Jumlah jualan anda = " + JumlahJualan);
+    }
+}
+&gt; run HargaJualan
+Jumlah Jualan anda = -20.0</code></pre>
+                <p class="mb-2">a. Aturcara di atas mempunyai ralat. Apakah jenis ralat tersebut? (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3" placeholder="Jawapan a...">
+                
+                <p class="mb-2">b. Betulkan aturcara yang salah. (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3 font-mono" placeholder="Jawapan b...">
+
+                <p class="mb-2">c. Seandainya aturcara di atas betul, apakah output yang akan dipaparkan? (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3 font-mono" placeholder="Jawapan c...">
+
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">a. Ralat logik (1M)<br>b. JumlahJualan = jualan1 + jualan2; (1M)<br>c. Jumlah jualan anda = 220.00 (1M)[cite: 12]</p>
+                </div>
+            </div>
+
+            <!-- Q10 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">10. Berikut adalah pengisytiharan tatasusunan dalam pengaturcaraan. Berdasarkan tatasusunan MpSains berikut, jawab soalan yang diberi</p>
+                <pre class="bg-gray-800 text-green-400 p-4 rounded mb-4 overflow-x-auto"><code>string [] MpSains = {"Fizik", "Kimia", "Biologi", "Matematik Tambahan", "SainsKomputer"}</code></pre>
+                
+                <p class="mb-2">a. Berapakah saiz tatasusunan MpSains? (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3" placeholder="Jawapan a...">
+                
+                <p class="mb-2">b. Tulis semula kod java untuk mencetak elemen "SainsKomputer". (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3 font-mono" placeholder="Jawapan b...">
+
+                <p class="mb-2">c. Apakah nilai yang di cetak oleh kod java berikut? <code>System.out.println(MpSains [3]);</code> (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3" placeholder="Jawapan c...">
+
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">a. Saiz tatasusunan = 5 (1M)[cite: 12]<br>b. system.out.println(MpSains [5]); (1M)[cite: 12]<br>c. Matematik Tambahan (1M)[cite: 13]</p>
+                </div>
+            </div>
+
+            <!-- Q11 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">11. Sub aturcara dibawah menunjukkan pengumpulan nilai parameter kepada parameter.</p>
+                <pre class="bg-gray-800 text-green-400 p-4 rounded mb-4 overflow-x-auto text-sm"><code>public class Markah {
+    public static void main(String[] args) {
+        Markah (87,72,70,82);
+    }
+    static void Markah (int x, int y, int z, int p) {
+        double purata = (x+y+z+p) / 4.0; 
+        System.out.print(purata);
+    }
+}</code></pre>
+                <p class="mb-2">a. Apakah jenis data untuk parameter y? (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3" placeholder="Jawapan a...">
+                
+                <p class="mb-2">b. Berdasarkan aturcara di atas, apakah output yang anda jangkakan? (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3" placeholder="Jawapan b...">
+
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">a. integer (1M)<br>b. purata = 77.75 (1M)[cite: 13]</p>
+                </div>
+            </div>
+
+            <!-- Q12 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">12. Rajah dibawah menunjukkan sebahagian sub aturcara komputer untuk memanggil nama subjek sains yang mengandungi ralat</p>
+                <pre class="bg-gray-800 text-green-400 p-4 rounded mb-4 overflow-x-auto text-sm"><code>public markahSK;
+public class Markah {
+    public static void main(String[] args) {
+        NamaSubjek [0] = "Fizik";
+        NamaSubjek [1] = "Kimia";
+        NamaSubjek [2] = "Biologi";
+        NamaSubjek [3] = "Matematik Tambahan";
+        NamaSubjek [4] = "Sains Komputer";
+    }
+}</code></pre>
+                <p class="mb-2">a. Kenalpasti ralat tersebut. (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3 font-mono" placeholder="Jawapan a...">
+                
+                <p class="mb-2">b. Namakan jenis ralat tersebut. (1 markah)</p>
+                <input type="text" class="w-full border border-gray-300 p-2 rounded mb-3" placeholder="Jawapan b...">
+
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">a. char( ) NamaSubjek new Char [5]; (1M)<br>b. Ralat sintaks (1M)[cite: 13]</p>
+                </div>
+            </div>
+
+            <!-- Q13 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">13. Lengkapkan jadual dibawah dengan menyenaraikan atribut yang sesuai bagi entiti Pensyarah. (2 markah)</p>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div><label>a.</label><input type="text" class="w-full border p-2 rounded mt-1"></div>
+                    <div><label>b.</label><input type="text" class="w-full border p-2 rounded mt-1"></div>
+                    <div><label>c.</label><input type="text" class="w-full border p-2 rounded mt-1"></div>
+                    <div><label>d.</label><input type="text" class="w-full border p-2 rounded mt-1"></div>
+                </div>
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan (Atribut Pensyarah - 2M):</p>
+                    <p class="text-green-900">a. No_Kad Pengenalan<br>b. Nama<br>c. Jabatan<br>d. Jawatan<br><em class="text-sm text-green-700">*Apa-apa jawapan yang boleh diterima[cite: 13]</em></p>
+                </div>
+            </div>
+
+            <!-- Q14 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">14. Berdasarkan rajah di bawah, apakah paling tepat untuk 'y'? (1 markah)</p>
+                <div class="bg-gray-100 p-4 mb-4 flex items-center justify-center space-x-4 border rounded font-semibold text-center">
+                    <div>[Data]<br>[Data]<br>[Data]</div>
+                    <div>&rarr;</div>
+                    <div class="border p-2 bg-white">Kumpul<br>Simpan<br>Proses</div>
+                    <div>&rarr;</div>
+                    <div class="border p-2 bg-white w-16">y</div>
+                </div>
+                <input type="text" class="w-full border border-gray-300 p-3 rounded mb-3" placeholder="y = ...">
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">y = Maklumat (1M)[cite: 13]</p>
+                </div>
+            </div>
+
+            <!-- Q15 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">15. Tukarkan set hubungan dalam bentuk pernyataan teks berikut kepada bentuk perwakilan grafik.</p>
+                <p class="mb-2">a. PELANGGAN (IDPelanggan, Nama, Jantina, No_telefon) (1 markah)</p>
+                <textarea class="w-full border p-2 rounded mb-3" rows="2" placeholder="Senaraikan atribut untuk a..."></textarea>
+                
+                <p class="mb-2">b. KERETA(No_pendaftaran, No_Chasis, Warna, Kuasa_Kuda) (1 markah)</p>
+                <textarea class="w-full border p-2 rounded mb-3" rows="2" placeholder="Senaraikan atribut untuk b..."></textarea>
+
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">a. (1M)<br>IDPelanggan, Nama, Jantina, No telefon[cite: 13]<br><br>b. (1M)<br>No_pendaftaran, No_Chasis, Warna, Kuasa Kuda[cite: 13]</p>
+                </div>
+            </div>
+
+            <!-- Q16 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">16. Bina kebergantungan fungsi berdasarkan data dalam jadual dibawah (4 markah)</p>
+                <div class="overflow-x-auto mb-4">
+                    <table>
+                        <tr><th>Kod Kereta</th><th>Nama Kereta</th><th>Pembeli</th><th>ID_Pembeli</th><th>No Telefon</th><th>Tarikh Beli</th></tr>
+                        <tr><td>NG10027</td><td>Myvi</td><td>Ismail</td><td>037457</td><td>0138381235</td><td>12 Ogos 2016</td></tr>
+                        <tr><td>NG10030</td><td>Viva</td><td>Saidi</td><td>036067</td><td>0138819874</td><td>30 Julai 2016</td></tr>
+                    </table>
+                </div>
+                <p class="mb-2">a. Kebergantungan Fungsi Sepenuh</p>
+                <input type="text" class="w-full border p-2 rounded mb-3">
+                <p class="mb-2">b. Kebergantungan Fungsi Separa</p>
+                <input type="text" class="w-full border p-2 rounded mb-3">
+                <p class="mb-2">c. Kebergantungan Fungsi Transitif</p>
+                <input type="text" class="w-full border p-2 rounded mb-3">
+
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan (4M):</p>
+                    <p class="text-green-900">a. Kebergantungan Fungsi Sepenuh: Pembeli, Kod_Kereta &rarr; ID_Pembeli<br>b. Kebergantungan Fungsi Separa: ID_Pembeli &rarr; Pembeli<br>c. Kebergantungan Fungsi Transitif: Pembeli[cite: 13]</p>
+                </div>
+            </div>
+
+            <!-- Q17 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">17. Jadual di bawah menunjukkan penetapan kunci bagi menghubungkan dua buah jadual.</p>
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <p class="font-bold text-sm">Jadual 1</p>
+                        <table class="text-sm"><tr><th>No_Pekerja</th><th>No_Gaji</th><th>Tarikh_Masuk</th><th>Kelayakan</th></tr><tr><td>D44882</td><td>969780</td><td>01 Jan 1995</td><td>B.Ed Hons</td></tr></table>
+                    </div>
+                    <div>
+                        <p class="font-bold text-sm">Jadual 2</p>
+                        <table class="text-sm"><tr><th>No_Gaji</th><th>Nama_Pekerja</th><th>No Telefon</th></tr><tr><td>969780</td><td>Noreen Hafilda</td><td>0139887878</td></tr></table>
+                    </div>
+                </div>
+                <p class="mb-2">a. Namakan kunci primer bagi:</p>
+                <input type="text" class="w-full border p-2 rounded mb-2" placeholder="i. Jadual 1 (1 markah)">
+                <input type="text" class="w-full border p-2 rounded mb-3" placeholder="ii. Jadual 2 (1 markah)">
+                <p class="mb-2">b. Yang manakah di isytiharkan sebagai kunci asing (1 markah)</p>
+                <input type="text" class="w-full border p-2 rounded mb-3">
+
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">a. i. No_Pekerja (1M)<br>ii. No_Gaji (1M)<br>b. No_Gaji (1M)[cite: 13]</p>
+                </div>
+            </div>
+
+            <!-- Q18 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">18. Rajah di bawah menunjukkan contoh pangkalan data yang dibina. Padankan maklumat dalam jadual di bawah dengan istilah yang digunakan. (4 markah)</p>
+                <div class="mb-4">
+                    <p class="text-sm mb-2 text-gray-500 italic">P = Tajuk Jadual (AKAUN), Q = Nama Lajur (No_KP), R = Sel Data (27345801), S = Baris Rekod</p>
+                    <table class="w-1/2">
+                        <tr><th></th><th>Istilah</th><th>Jawapan (P/Q/R/S)</th></tr>
+                        <tr><td>A</td><td>Entiti</td><td><input type="text" class="w-full border p-1 text-center" maxlength="1"></td></tr>
+                        <tr><td>B</td><td>Atribut</td><td><input type="text" class="w-full border p-1 text-center" maxlength="1"></td></tr>
+                        <tr><td>C</td><td>Nilai Atribut</td><td><input type="text" class="w-full border p-1 text-center" maxlength="1"></td></tr>
+                        <tr><td>D</td><td>Rekod</td><td><input type="text" class="w-full border p-1 text-center" maxlength="1"></td></tr>
+                    </table>
+                </div>
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">A. P (1M)<br>B. Q (1M)<br>C. R (1M)<br>D. S (1M)[cite: 13]</p>
+                </div>
+            </div>
+
+            <!-- Q19 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">19. Pembangunan pangkalan data melibatkan beberapa aktiviti seperti berikut. Susun semula aktiviti berikut mengikut susunan yang betul. (1 markah)</p>
+                <ul class="list-none text-sm mb-3">
+                    <li>I. Membina pangkalan data</li>
+                    <li>II. Mengisi jadual</li>
+                    <li>III. Membina carian (Query)</li>
+                    <li>IV. Membina jadual (Table)</li>
+                    <li>V. Mewujudkan hubungan (relationship)</li>
+                    <li>VI. Membina dan mengisi borang membina laporan (report)</li>
+                    <li>VII. Menyunting rekod</li>
+                    <li>VIII. ...</li>
+                </ul>
+                <input type="text" class="w-full border p-3 rounded mb-3 font-mono tracking-widest" placeholder="Contoh: I-II-III-IV...">
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900 font-bold">Susunan betul = I-II-IV-V-VI-VIII - III-VII (1M)[cite: 14]</p>
+                </div>
+            </div>
+
+            <!-- Q20 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-emerald-500">
+                <p class="font-bold mb-3">20. Rajah di bawah menunjukkan paparan skrin telefon pintar.</p>
+                <p class="mb-2">a. Ikon pada skrin menunjukkan aplikasi yang kekal pada tempat yang sama untuk memudahkan pengguna. Prinsip ini dikenali sebagai ________ (1 markah)</p>
+                <input type="text" class="w-full border p-2 rounded mb-3">
+                <p class="mb-2">b. Nyatakan satu prinsip reka bentuk interaktif selain jawapan di (a). (1 markah)</p>
+                <input type="text" class="w-full border p-2 rounded mb-3">
+                <button onclick="checkAnswer(this)" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <p class="font-bold text-green-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-green-900">a. Konsistensi (consistency) (1M)<br>b. Kebolehan membuat pemerhatian (perceivability) atau Boleh dipelajari (learnability) atau Kebolehan untuk menjangka (predictability) atau Maklum balas (feedback) *mana-mana 1 jawapan (1M)[cite: 14]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAHAGIAN B -->
+        <div id="bahagianB" class="tab-content hidden fade-in">
+            <h2 class="text-3xl font-bold text-emerald-700 mb-6 border-b-2 border-emerald-300 pb-2">BAHAGIAN B (50 MARKAH)</h2>
+            <p class="mb-4 font-medium">Bahagian ini mengandungi 4 soalan. Jawab semua soalan.</p>
+
+            <!-- Q21 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-blue-500">
+                <p class="font-bold mb-3">21. Aturcara di bawah disediakan untuk membuat pengiraan isipadu silinder.</p>
+                <pre class="bg-gray-800 text-green-400 p-4 rounded mb-4 overflow-x-auto text-sm"><code>public class IsipaduSilinder {
+    public static void main (String[] arg) {
+        int Jejari = 6;
+        int Tinggi = 8;
+        double isipadu;
+        final double pi = 3.142;
+        
+        isipadu = pi * jejari * jejari * Tinggi;
+        System.out.println("Isipadu Silinder = " + isipadu);
+    }
+}</code></pre>
+                <p class="mb-2 italic text-red-600 text-sm">Apabila aturcara dijalankan, pengkompil telah mengeluarkan ralat.</p>
+                
+                <p class="mb-2">a. Nyatakan jenis ralat dalam aturcara di atas. (1 markah)</p>
+                <input type="text" class="w-full border p-2 rounded mb-3">
+                
+                <p class="mb-2">b. Kenalpasti aturcara yang mempunyai ralat dan tulis semula aturcara tersebut supaya bebas ralat. (2 markah)</p>
+                <input type="text" class="w-full border p-2 rounded mb-3 font-mono">
+                
+                <p class="mb-2">c. Nyatakan 2 pembolehubah dalam aturcara di atas. (2 markah)</p>
+                <input type="text" class="w-full border p-2 rounded mb-3">
+                
+                <p class="mb-2">d. Bina pseudokod untuk aturcara di atas. (5 markah)</p>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3 font-mono" rows="6"></textarea>
+
+                <button onclick="checkAnswer(this)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                    <p class="font-bold text-blue-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-blue-900 mb-2">a. Ralat logik (1M)<br>b. isipadu = pi * jejari * Tinggi (2M)<br>c. Jejari (1M) dan Tinggi (1M)[cite: 14]</p>
+                    <pre class="text-blue-900 bg-white p-2 border border-blue-100 mt-2">d. (5M)
+1. MULA
+2. INPUT - masukkan nilai Tinggi dan jejari
+3. PROSES - kira isipadu silinder
+4. OUTPUT - papar isipadu silinder
+5. TAMAT[cite: 14]</pre>
+                </div>
+            </div>
+
+            <!-- Q22 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-blue-500">
+                <p class="font-bold mb-3">22. Rajah di bawah menunjukkan tatasusunan RumahSukan.</p>
+                <pre class="bg-gray-800 text-green-400 p-4 rounded mb-4 overflow-x-auto text-sm"><code>string [] RumahSukan = { "Tunku Ab Rahman", "Tun Razak", "Tun Hussein", "Tun Dr Mahadhir", "Tun Abdullah" };</code></pre>
+                
+                <p class="mb-2">a. Berapakah saiz tatasusunan Rumah Sukan. (1 markah)</p>
+                <input type="text" class="w-full border p-2 rounded mb-3">
+                
+                <p class="mb-2">b. Tuliskan kod java untuk mencetak elemen "Tunku Ab Rahman" dan "Tun Razak". (2 markah)</p>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3 font-mono" rows="2"></textarea>
+                
+                <p class="mb-2">c. Berapakah nilai yang dicetak oleh kod java berikut?</p>
+                <input type="text" class="w-full border p-2 rounded mb-2" placeholder="i. System.out.println(RumahSukan [3]); (1 markah)">
+                <input type="text" class="w-full border p-2 rounded mb-3" placeholder="ii. System.out.println(RumahSukan [2]); (1 markah)">
+                
+                <p class="mb-2">d. Lukis rajah blok memori untuk tatasusunan di atas. Pastikan lukisan mengandungi nama tatasusunan, indeks dan elemen-elemen. (5 markah)</p>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3" rows="3" placeholder="(Sila lakar di atas kertas atau huraikan di sini...)"></textarea>
+
+                <button onclick="checkAnswer(this)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                    <p class="font-bold text-blue-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-blue-900 mb-2">a. Saiz tatasusunan = 5 (1M)<br>b. System.out.println(RumahSukan [0]) (1M)<br>   System.out.println (RumahSukan [1]) (1M)<br>c. i. Tun Dr Mahadhir (1M)<br>   ii. Tun Razak (1M)[cite: 14]</p>
+                    <p class="text-blue-900 font-bold mt-2">d. Rajah Blok Memori (6M):</p>
+                    <table class="text-xs bg-white w-full text-center">
+                        <tr><th colspan="5">Rumah Sukan</th></tr>
+                        <tr><td>[0]</td><td>[1]</td><td>[2]</td><td>[3]</td><td>[4]</td></tr>
+                        <tr><td>"Tunku Ab Rahman"</td><td>"Tun Razak"</td><td>"Tun Hussein"</td><td>"Tun Dr Mahadhir"</td><td>"Tun Abdullah"</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Q23 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-blue-500">
+                <p class="font-bold mb-3">23. Anda diminta membina Sistem Maklumat untuk kelas anda. Sistem Maklumat tersebut boleh menyimpan data murid, ujian dan mata pelajaran yang di pelajari.</p>
+                
+                <p class="mb-2">a. Senaraikan atribut-atribut bagi entiti berikut.</p>
+                <input type="text" class="w-full border p-2 rounded mb-2" placeholder="i. MURID (2 markah)">
+                <input type="text" class="w-full border p-2 rounded mb-2" placeholder="ii. UJIAN (2 markah)">
+                <input type="text" class="w-full border p-2 rounded mb-3" placeholder="iii. MATAPELAJARAN (2 markah)">
+                
+                <p class="mb-2">b. Berdasarkan atribut-atribut di atas, bina Rajah Hubungan Entiti (ERD) yang lengkap. (6 markah)</p>
+                <textarea class="w-full border border-gray-300 p-3 rounded mb-3" rows="3" placeholder="(Huraikan hubungan ERD di sini...)"></textarea>
+
+                <p class="mb-2">c. Nyatakan kekardinalan bagi hubungan berikut.</p>
+                <input type="text" class="w-full border p-2 rounded mb-2" placeholder="i. MURID - UJIAN (1 markah)">
+                <input type="text" class="w-full border p-2 rounded mb-2" placeholder="ii. MURID - MATAPELAJARAN (1 markah)">
+                <input type="text" class="w-full border p-2 rounded mb-3" placeholder="iii. MATAPELAJARAN - UJIAN (1 markah)">
+
+                <button onclick="checkAnswer(this)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                    <p class="font-bold text-blue-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-blue-900 mb-2">a. Senarai atribut<br>i. MURID (ID_Murid, No_KP, Nama, Jantina) (2M)<br>ii. UJIAN (Kod_Ujian, Nama_Ujian) (2M)<br>iii. MATAPELAJARAN (Kod_MP, Nama_MP) (2M) *atau mana-mana jawapan yang boleh diterima[cite: 14]</p>
+                    <p class="text-blue-900 mb-2">b. ERD: MURID (M) belajar (N) MATAPELAJARAN, MURID (M) ambil (N) UJIAN, MATAPELAJARAN (M) ada (N) UJIAN beserta atribut berhubung kait.[cite: 15]</p>
+                    <p class="text-blue-900">c. Kekardinalan<br>i. M:N (Banyak ke Banyak) (1M)<br>ii. M:N (Banyak ke Banyak) (1M)<br>iii. M:N (Banyak ke Banyak) (1M)[cite: 15]</p>
+                </div>
+            </div>
+
+            <!-- Q24 -->
+            <div class="question-card bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-blue-500">
+                <p class="font-bold mb-3">24. Jadual di bawah menunjukkan data jualan untuk satu produk kecantikan</p>
+                <div class="overflow-x-auto mb-4">
+                    <table class="text-sm">
+                        <tr><th>IDPelanggan</th><th>Nama Pelanggan</th><th>Agen</th><th>Kawasan</th><th>IDProduk</th><th>NamaProduk</th><th>Kuantiti</th></tr>
+                        <tr><td>SKG001</td><td>Rahimi</td><td>Salim</td><td>Timur</td><td>CA345,<br>JP678</td><td>COFFEE ARJUNA,<br>JUS PERAWAN</td><td>20, 40</td></tr>
+                        <tr><td>SKG002</td><td>Kamal</td><td>Aida</td><td>Barat</td><td>JP678,<br>CA345</td><td>JUS PERAWAN,<br>COFFEE ARJUNA</td><td>45, 45</td></tr>
+                        <tr><td>SKG003</td><td>Ali</td><td>Ummi</td><td>Utara</td><td>PM885</td><td>PERFUME MAGIC</td><td>50</td></tr>
+                        <tr><td>SKG004</td><td>Amir</td><td>Aida</td><td>Barat</td><td>LPS86,<br>PM885</td><td>LOSYEN PUTIH SUSU,<br>PERFUME MAGIC</td><td>27, 57</td></tr>
+                    </table>
+                </div>
+                
+                <p class="mb-2">a. Berikan ciri-ciri sebuah jadual di peringkat penormalan pertama (1NF). (2 markah)</p>
+                <textarea class="w-full border p-2 rounded mb-3" rows="2"></textarea>
+                
+                <p class="mb-2">b. Bina jadual penormalan 1NF dan namakan kunci primer. (4 markah)</p>
+                <textarea class="w-full border p-2 rounded mb-3" rows="3"></textarea>
+                
+                <p class="mb-2">c. Berikan ciri-ciri sebuah jadual di peringkat penormalan 2NF. (2 markah)</p>
+                <textarea class="w-full border p-2 rounded mb-3" rows="2"></textarea>
+
+                <p class="mb-2">d. Bina jadual penormalan 2NF dan namakan kunci primer. (6 markah)</p>
+                <textarea class="w-full border p-2 rounded mb-3" rows="3"></textarea>
+
+                <p class="mb-2">e. Berikan ciri-ciri sebuah jadual di peringkat penormalan 3NF. (1 markah)</p>
+                <textarea class="w-full border p-2 rounded mb-3" rows="2"></textarea>
+
+                <button onclick="checkAnswer(this)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Semak Jawapan</button>
+                <div class="skema-jawapan hidden mt-4 bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                    <p class="font-bold text-blue-800 mb-2">📋 Skema Jawapan:</p>
+                    <p class="text-blue-900 mb-2">a. Ciri-ciri 1NF: Memastikan lajur jadual adalah atomik, iaitu menghilangkan pertindihan lajur dari jadual yang sama dan mempunyai kunci primer. (2M)[cite: 15]</p>
+                    <p class="text-blue-900 mb-2">b. Kunci primer: IDPelanggan (Jadual memisahkan rekod berbilang nilai kepada baris individu atomik) (4M)[cite: 15]</p>
+                    <p class="text-blue-900 mb-2">c. Ciri-ciri 2NF: Untuk menghapuskan kebergantungan fungsi separa, di mana penentunya merupakan sebahagian daripada kunci. Kebergantungan fungsi separa berlaku apabila atribut biasa bergantung kepada salah satu atribut kunci primer sahaja. (2M)[cite: 15]</p>
+                    <p class="text-blue-900 mb-2">d. Jadual 2NF memisahkan kepada PELANGGAN (Kunci: IDPelanggan), PRODUK (Kunci: IDProduk), dan PEMBELIAN (Kunci: KodBeli). (6M)[cite: 16]</p>
+                    <p class="text-blue-900">e. Ciri-ciri 3NF: Untuk menghapuskan kebergantungan fungsi transitif. Kebergantungan fungsi transitif adalah satu atribut bukan kunci yang boleh menentukan atribut yang lain yang juga bukan kunci. (1M)[cite: 16]</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Gamification Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 transform translate-y-4 font-bold flex items-center space-x-2 pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span>Syabas! Sila bandingkan jawapan anda.</span>
+    </div>
+
+    <!-- Logic Script -->
+    <script>
+        function switchTab(tabId) {
+            document.getElementById('bahagianA').classList.add('hidden');
+            document.getElementById('bahagianB').classList.add('hidden');
+            
+            document.getElementById('btnA').classList.replace('bg-emerald-800', 'bg-emerald-500');
+            document.getElementById('btnB').classList.replace('bg-emerald-800', 'bg-emerald-500');
+            
+            document.getElementById(tabId).classList.remove('hidden');
+            
+            if(tabId === 'bahagianA') {
+                document.getElementById('btnA').classList.replace('bg-emerald-500', 'bg-emerald-800');
+            } else {
+                document.getElementById('btnB').classList.replace('bg-emerald-500', 'bg-emerald-800');
+            }
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('toast-show');
+            setTimeout(() => {
+                toast.classList.remove('toast-show');
+            }, 3000);
+        }
+
+        function checkAnswer(button) {
+            const card = button.closest('.question-card');
+            const answerBox = card.querySelector('.skema-jawapan');
+            
+            // Tunjuk animasi skema
+            answerBox.classList.remove('hidden');
+            answerBox.classList.add('block', 'fade-in');
+            
+            // Ubah gaya butang
+            button.innerText = 'Disemak';
+            button.classList.replace('bg-emerald-600', 'bg-gray-400');
+            button.classList.replace('bg-blue-600', 'bg-gray-400');
+            button.classList.replace('hover:bg-emerald-700', 'cursor-not-allowed');
+            button.classList.replace('hover:bg-blue-700', 'cursor-not-allowed');
+            button.disabled = true;
+
+            // Panggil notifikasi motivasi
+            showToast();
+        }
+    </script>
+</body>
+</html>
